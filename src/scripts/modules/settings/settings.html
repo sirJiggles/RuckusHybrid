@@ -1,0 +1,212 @@
+<ion-view title="Settings" class="settings view-dark">
+  <ion-content>
+    <form name="settingsForm">
+      <div class="item item--no-border" ng-if="!vm.pro">
+        <a ng-click="vm.goPro()" class="button button-block button-outline button-icon icon-right flaticon-batman">Get Pro</a>
+        <a ng-click="vm.rate()" class="button button-block button-outline button-icon icon-right flaticon-rate">Rate</a>
+      </div>
+      <div class="item item--no-border" ng-if="vm.pro">
+        <a ng-click="vm.rate()" class="button button-block button-outline button-icon icon-right flaticon-rate">Rate</a>
+      </div>
+      <div class="list">
+        <div class="item item-divider">
+          Timer settings
+        </div>
+        <label class="item item-input item-select">
+          <span class="input-label">
+            Rounds
+          </span>
+          <select
+            ng-model="vm.rounds"
+            required="required"
+            ng-change="vm.changes()"
+            ng-options="i for i in vm.possibleRounds">
+          </select>
+        </label>
+        <label class="item item-input item-select">
+          <span class="input-label">
+            Round Time
+          </span>
+          <select
+            ng-model="vm.roundDuration"
+            required="required"
+            ng-change="vm.changes()"
+            ng-options="i for i in vm.roundTimes">
+          </select>
+        </label>
+        <div class="item item-input item-select">
+          <i ng-click="vm.showTooltip('pausetime');" class="flaticon flaticon-info"></i>
+          <label>
+            <span class="input-label">
+              Pause Time
+            </span>
+            <select
+              ng-model="vm.pauseDuration"
+              required="required"
+              ng-change="vm.changes()"
+              ng-options="i for i in vm.pauseTimes">
+            </select>
+          </label>
+        </div>
+        <div class="item item-input item-select item--no-border">
+          <i ng-click="vm.showTooltip('preptime');" class="flaticon flaticon-info"></i>
+          <label>
+            <span class="input-label">
+              Preparation Time
+            </span>
+            <select
+              ng-model="vm.ready"
+              required="required"
+              ng-change="vm.changes()"
+              ng-options="i for i in vm.readyTimes">
+            </select>
+          </label>
+        </div>
+        <div class="item item-divider">
+          Sounds
+        </div>
+        <div class="item item-toggle custom-toggle">
+          <i ng-click="vm.showTooltip('callouts');" class="flaticon flaticon-info"></i>
+          Call out hits
+          <label class="toggle">
+           <input
+             type="checkbox"
+             ng-model="vm.callouts"
+             ng-change="vm.changes()"
+           />
+           <div class="track">
+             <div class="handle"></div>
+           </div>
+          </label>
+        </div>
+        <label class="item item-input item-select">
+          <span class="input-label">
+            Voice style
+          </span>
+          <select
+            ng-model="vm.voice"
+            required="required"
+            ng-disabled="!vm.callouts"
+            ng-change="vm.proChange('voice')"
+            ng-options="i for i in vm.voices">
+          </select>
+        </label>
+        <div class="item item-toggle custom-toggle">
+          <i ng-click="vm.showTooltip('kicks');" class="flaticon flaticon-info"></i>
+           Kicks
+           <label class="toggle">
+             <input
+               type="checkbox"
+               ng-model="vm.kicks"
+               ng-disabled="!vm.callouts"
+               ng-change="vm.changes()"
+             />
+             <div class="track">
+               <div class="handle"></div>
+             </div>
+           </label>
+        </div>
+        <div class="item item-toggle custom-toggle">
+          <i ng-click="vm.showTooltip('jumpingKicks');" class="flaticon flaticon-info"></i>
+           Jumping kicks
+           <label class="toggle">
+             <input
+               type="checkbox"
+               ng-model="vm.jumpingKicks"
+               ng-disabled="!vm.callouts || !vm.kicks"
+               ng-change="vm.changes()"
+             />
+             <div class="track">
+               <div class="handle"></div>
+             </div>
+           </label>
+        </div>
+        <div class="item item-toggle custom-toggle">
+          <i ng-click="vm.showTooltip('spinningKicks');" class="flaticon flaticon-info"></i>
+           Spinning kicks
+           <label class="toggle">
+             <input
+               type="checkbox"
+               ng-model="vm.spinningKicks"
+               ng-disabled="!vm.callouts || !vm.kicks"
+               ng-change="vm.changes()"
+             />
+             <div class="track">
+               <div class="handle"></div>
+             </div>
+           </label>
+        </div>
+        <div class="item item-toggle custom-toggle">
+          <i ng-click="vm.showTooltip('dirtys');" class="flaticon flaticon-info"></i>
+           Dirty moves
+           <label class="toggle">
+             <input
+               type="checkbox"
+               ng-model="vm.dirty"
+               ng-disabled="!vm.callouts"
+               ng-click="vm.changes()"
+             />
+             <div class="track">
+               <div class="handle"></div>
+             </div>
+           </label>
+        </div>
+        <div class="item item-toggle custom-toggle item--no-border">
+          <i ng-click="vm.showTooltip('dodges');" class="flaticon flaticon-info"></i>
+           Dodges and covers
+           <label class="toggle">
+             <input
+               type="checkbox"
+               ng-model="vm.dodges"
+               ng-disabled="!vm.callouts"
+               ng-click="vm.changes()"
+             />
+             <div class="track">
+               <div class="handle"></div>
+             </div>
+           </label>
+        </div>
+        <div class="item item-divider">
+          <i ng-click="vm.showTooltip('difficulty');" class="flaticon flaticon-info"></i>
+          Difficulty
+        </div>
+        <div class="item range item--no-border">
+          <i class="flaticon flaticon-sad"></i>
+          <input
+            type="range"
+            ng-model="vm.difficulty"
+            ng-change="vm.changes()"
+            ng-disabled="!vm.callouts"
+            min="0"
+            max="100" />
+          <i class="flaticon flaticon-angry"></i>
+        </div>
+        <div class="item item-divider">
+          Volume
+        </div>
+        <div class="item range">
+          <input
+            type="range"
+            ng-model="vm.volume"
+            ng-change="vm.changes()"
+            ng-disabled="!vm.callouts"
+            min="0"
+            max="100" />
+        </div>
+        <div class="item item--no-border">
+          <a
+            ng-click="vm.volumeSample()"
+            class="settings__volume-sample">
+            <i class="flaticon flaticon-play"></i>
+          </a>
+        </div>
+        <div class="item item-divider">
+          Credits
+        </div>
+        <div class="item">
+          <a ui-sref="credits" class="button button-block button-outline">View Credits</a>
+        </div>
+      </div>
+    </form>
+  </ion-content>
+</ion-view>

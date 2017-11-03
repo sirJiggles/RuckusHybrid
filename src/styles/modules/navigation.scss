@@ -1,0 +1,36 @@
+@import '../vars/colors';
+
+.navigation {
+  .tabs {
+    background-color: #222;
+    border-image: none;
+    background-image: none;
+    border: none;
+    color: white;
+  }
+}
+
+// android nav border
+.tabs-striped .tab-item.activated,
+.tabs-striped .tab-item.active,
+.tabs-striped .tab-item.tab-item-active {
+  border-color: $orange;
+}
+
+// Custom styles for the tab icons
+.tab-item {
+  color: white;
+  opacity: 0.7;
+}
+
+.tab-item.activated,
+.tab-item.active,
+.tab-item.tab-item-active {
+  color: $orange;
+  opacity: 1;
+}
+
+// prevent the fucking flicker on IOS
+.tabs .tab-item i:nth-of-type(2) {
+  display: none;
+}

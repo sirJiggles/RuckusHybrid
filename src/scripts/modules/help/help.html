@@ -1,0 +1,26 @@
+<ion-view title="Help" class="help view-dark">
+  <ion-content>
+    <ion-list>
+      <div class="item item-divider">
+        Help
+      </div>
+      <div ng-repeat="video in vm.videos track by $index">
+        <ion-item ng-click="vm.showItem($index)" class="item-complex">
+          <div class="item-content">
+            <h3 class="help__title">{{video.name}}</h3>
+          </div>
+        </ion-item>
+        <ion-item class="item-accordion" collapse="vm.isActive($index)">
+          <div class="accordion-inner">
+            <p class="help__descr">{{video.descr}}</p>
+            <div class="help__video" ng-if="video.id">
+              <i class="flaticon flaticon-gloves" ng-hide="video.loaded"></i>
+              <iframe ng-if="vm.isActive($index)" iframe-onload="vm.loadedVideo($index)" ng-src="{{'https://www.youtube.com/embed/' + video.id + '?rel=0'}}"></iframe>
+            </div>
+            <p class="help__descr" ng-if="video.more">{{video.more}}</p>
+          </div>
+        </ion-item>
+      </div>
+    </ion-list>
+  </ion-content>
+</ion-view>

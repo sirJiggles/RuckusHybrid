@@ -1,0 +1,71 @@
+@import '../vars/colors';
+
+// the modules the accordian is used on
+.help,
+.workouts {
+  // accordion styles / ionic overrides
+  .list {
+    .item {
+      padding: 0;
+      margin: 0;
+      border: none;
+
+      &--gopro {
+        padding: 10px 20px;
+
+        p {
+          padding: 10px 0;
+        }
+      }
+
+      p {
+        white-space: normal;
+        color: #eee;
+      }
+
+      h3 {
+        color: #444;
+      }
+
+      &-divider {
+        padding:16px;;
+      }
+
+      &-accordion {
+        overflow: hidden;
+        transition: 0.2s height linear;
+        border: none;
+        background: none;
+        color: black;
+        height: 0px;
+
+        // collapsed is actually open ...
+        &.collapsed {
+          height: auto;
+          // box-shadow: black 0px 15px 15px -15px inset;
+        }
+      }
+
+      .accordion-inner {
+        padding: 16px;
+        // background-color: rgba(white, 0.1);
+      }
+    }
+  }
+
+  .scroll-content {
+    margin-bottom: 50px;
+  }
+
+  // list overrides
+  .item-complex .item-content, .item-radio .item-content {
+    padding: 16px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    background-color: white;
+    border-bottom: 1px solid #eee;
+  }
+
+}

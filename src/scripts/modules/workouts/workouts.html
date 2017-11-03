@@ -1,0 +1,61 @@
+<ion-view title="Workouts" class="workouts view-dark">
+  <ion-content>
+    <ion-list>
+      <div class="item item-divider">
+        Workouts
+      </div>
+      <div class="item item--gopro" ng-if="!vm.pro">
+        <p class="workouts__no-workouts">You can only save your workouts in Ruckus Pro.</p>
+        <a ng-click="vm.goPro()" class="button button-block button-outline button-icon icon-right flaticon-batman">Get Pro</a>
+      </div>
+      <div class="item workouts__empty" ng-if="(!vm.workouts || vm.workouts.length == 0) && vm.pro">
+        <p class="workouts__no-workouts">No workouts saved ... yet, click the save
+        icon after a workout to see it here</p>
+        <i class="flaticon flaticon-gloves workouts__empty__icon"></i>
+      </div>
+      <div class="item workouts__stats" ng-if="(vm.workouts && vm.workouts.length !== 0) && vm.pro">
+        <h2 class="workouts__stats__title">Hit totals for the last 10 workouts</h2>
+      </div>
+      <canvas id="lineChart"></canvas>
+      <div ng-repeat="workoutMonths in vm.workouts | groupBy:'month':'workoutsByMonth'" ng-if="vm.pro">
+        <div class="item item-divider">
+          {{workoutMonths.month}}
+        </div>
+        <div ng-repeat="workout in workoutMonths.items track by $index">
+          <ion-item ng-click="vm.showWorkout(workout.index)" on-swipe-left="vm.checkIfSeen()">
+            <h3 class="workouts__title">{{workout.val.date | date:'EEE dd - HH:mm'}}</h3>
+
+            <ion-option-button
+              class="workouts__slide-cta workouts__slide-cta--close"
+              ng-click="vm.removeWorkout(workout.key, workout.index)">
+              <i class="flaticon flaticon-close"></i>
+            </ion-option-button>
+            <ion-option-button
+              class="workouts__slide-cta workouts__slide-cta--share"
+              ng-click="vm.share(workout.val)">
+              <i class="flaticon flaticon-share"></i>
+            </ion-option-button>
+            <i ng-show="workout.val.shared" class="workouts__icon workouts__shared-icon flaticon flaticon-share"></i>
+            <i ng-show="!vm.seenOptions" class="workouts__seen-icon flaticon flaticon-double-left-arrows"></i>
+          </ion-item>
+          <ion-item collapse="vm.isActive(workout.index)" class="item-accordion">
+            <ul class="workouts__workout accordion-inner">
+              <li class="workouts__workout__stat">
+                <span>Rounds:</span>&nbsp;{{workout.val.roundsDone}}
+              </li>
+              <li class="workouts__workout__stat">
+                <span>Time:</span>&nbsp;{{workout.val.totalTime | time | date:'HH:mm:ss'}}
+              </li>
+              <li class="workouts__workout__stat" ng-if="workout.val.hitTotal">
+                <span>Hits landed:</span>&nbsp;{{workout.val.hitTotal}}
+              </li>
+              <li class="workouts__workout__stat" ng-if="workout.val.energyPoints">
+                <span>Points:</span>&nbsp;{{workout.val.energyPoints}}
+              </li>
+            </ul>
+          </ion-item>
+        </div>
+      </div>
+    </ion-list>
+  </ion-content>
+</ion-view>

@@ -1,0 +1,134 @@
+<ion-view
+  title="Boxing trainer"
+  class="view-dark view-100">
+
+  <ion-content class="padding" has-bouncing="false">
+
+    <div class="timer">
+
+      <!-- Show this version only if running -->
+      <div class="timer__inner" ng-if="!vm.finished">
+
+        <!-- Rounds display -->
+        <div class="timer__rounds">
+          <div ng-if="!vm.countDownMode">
+            Round {{vm.rounds}}
+          </div>
+          <div ng-if="vm.countDownMode">
+            Get ready!
+          </div>
+        </div>
+
+        <div class="timer__progress">
+          <div
+            class="progress-circle"
+            data-progress="{{vm.percentDone}}"
+            ng-class="{'progress-circle--paused': vm.pauseMode, 'progress-circle--countdown' : vm.countDownMode}"
+          >
+
+            <!-- Timer and controls display -->
+            <div class="timer__time">
+              <div class="timer__digits">
+                {{ vm.time | time | date:'mm:ss'}}
+              </div>
+            </div>
+
+            <div class="circle">
+              <div class="full progress-circle__slice">
+                <div class="progress-circle__fill"></div>
+              </div>
+              <div class="progress-circle__slice">
+                <div class="progress-circle__fill"></div>
+                <div class="progress-circle__fill progress-circle__bar"></div>
+              </div>
+            </div>
+            <div class="progress-circle__overlay"></div>
+          </div>
+        </div>
+
+        <nav class="timer__controls-nav">
+          <ul class="timer__controls">
+            <li
+              ng-if="!vm.running"
+              ng-click="vm.play()"
+              class="timer__controls__control timer__controls__control--play">
+              <i class="flaticon flaticon-play"></i>
+            </li>
+            <li
+              ng-if="vm.running"
+              ng-click="vm.pause()"
+              class="timer__controls__control timer__controls__control--pause">
+              <i class="flaticon flaticon-pause"></i>
+            </li>
+            <li
+              ng-if="vm.running"
+              ng-click="vm.stop()"
+              class="timer__controls__control timer__controls__control--stop">
+              <i class="flaticon flaticon-stop"></i>
+            </li>
+          </ul>
+        </nav>
+      </div>
+
+      <!-- Show this version only if finished -->
+      <div class="timer__inner timer__inner--finished" ng-if="vm.finished">
+        <div class="timer__rounds timer__rounds--done">Finished</div>
+        <ul class="timer__finished-summary__stats">
+          <li class="timer__finished-summary__stats__stat timer__finished-summary__stats--rounds">
+            <span>Rounds:</span>&nbsp;{{vm.rounds}}
+            <i ng-include="'svgs/bell.svg'" class="timer__finished-summary__stats__icon"></i>
+          </li>
+          <li class="timer__finished-summary__stats__stat timer__finished-summary__stats--burn" ng-if="vm.callOuts">
+            <span>Points:</span>&nbsp;{{vm.energyPoints}}
+            <i ng-include="'svgs/flame.svg'" class="timer__finished-summary__stats__icon"></i>
+          </li>
+          <li class="timer__finished-summary__stats__stat timer__finished-summary__stats--hits" ng-if="vm.callOuts">
+            <span>Hits:</span>&nbsp;{{vm.hitTotal}}
+            <i ng-include="'svgs/stats.svg'" class="timer__finished-summary__stats__icon"></i>
+          </li>
+          <li class="timer__finished-summary__stats__stat timer__finished-summary__stats--time">
+            <span>Time:</span>&nbsp;{{ vm.totalTime | time | date:'HH:mm:ss'}}
+            <i ng-include="'svgs/hourglass.svg'" class="timer__finished-summary__stats__icon"></i>
+          </li>
+        </ul>
+        <nav class="timer__controls-nav">
+          <ul class="timer__controls">
+            <li
+              ng-click="vm.save()"
+              class="timer__controls__control timer__controls__control--save"
+              ng-class="{'timer__controls__control--saved' : vm.saved}">
+              <i
+                class="flaticon flaticon-save"
+              ></i>
+              <span>Save</span>
+            </li>
+            <li
+              ng-click="vm.share()"
+              class="timer__controls__control timer__controls__control--share"
+              ng-class="{'timer__controls__control--shared' : vm.shared}">
+              <i class="flaticon flaticon-share"></i>
+              <span>Share</span>
+            </li>
+            <li
+              ng-click="vm.reset()"
+              class="timer__controls__control timer__controls__control--reset"
+            >
+              <i class="flaticon flaticon-close"></i>
+              <span>Close</span>
+            </li>
+          </ul>
+        </nav>
+      </div>
+
+    </div>
+    <!-- the directive that outputs all the hits,
+    could just be the logic for the sounds, but also could
+    be some things to dispaly later -->
+    <hit-caller></hit-caller>
+
+    <!-- directive for the hit recorder -->
+    <!-- <hit-recorder></hit-recorder> -->
+
+  </ion-content>
+
+</ion-view>

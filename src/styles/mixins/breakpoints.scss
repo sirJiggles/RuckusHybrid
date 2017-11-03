@@ -1,0 +1,33 @@
+$breakpoints: (
+  small: 310px,
+  medium: 359px,
+  large: 560px,
+  larger: 590px,
+  largest: 700px,
+  omg: 1000px,
+  wide: 400px,
+  wider: 479px,
+  widest: 800px
+);
+
+$heightBreakpoints: (
+  small: 300px,
+  medium: 374px,
+  large: 500px,
+  larger: 590px,
+  largest: 700px,
+  omg: 700px,
+  wide: 0px,
+  wider: 0px,
+  widest: 0px
+);
+
+@mixin bp($size) {
+  @if map-has-key($breakpoints, $size) {
+    @media only screen and (min-width: #{inspect(map-get($breakpoints, $size))}) and (min-height: #{inspect(map-get($heightBreakpoints, $size))}) {
+      @content;
+    }
+  } @else {
+    @warn "Could not find break point";
+  }
+}

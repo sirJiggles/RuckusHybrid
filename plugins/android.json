@@ -1,0 +1,45 @@
+{
+    "prepare_queue": {
+        "installed": [],
+        "uninstalled": []
+    },
+    "config_munge": {
+        "files": {}
+    },
+    "installed_plugins": {
+        "cordova-plugin-console": {
+            "PACKAGE_NAME": "garethfuller.fighttrainer"
+        },
+        "cordova-plugin-file": {
+            "PACKAGE_NAME": "garethfuller.fighttrainer"
+        },
+        "cordova-plugin-media": {
+            "PACKAGE_NAME": "garethfuller.fighttrainer"
+        },
+        "cordova-plugin-queries-schemes": {
+            "PACKAGE_NAME": "garethfuller.fighttrainer"
+        },
+        "cordova-plugin-statusbar": {
+            "PACKAGE_NAME": "garethfuller.fighttrainer"
+        },
+        "cordova-plugin-whitelist": {
+            "PACKAGE_NAME": "garethfuller.fighttrainer"
+        },
+        "cordova-plugin-x-socialsharing": {
+            "PACKAGE_NAME": "garethfuller.fighttrainer"
+        },
+        "cordova-plugin-inappbrowser": {
+            "PACKAGE_NAME": "garethfuller.fighttrainer"
+        },
+        "cordova-plugin-splashscreen": {
+            "PACKAGE_NAME": "garethfuller.fighttrainer"
+        },
+        "cordova-plugin-crosswalk-webview": {
+            "PACKAGE_NAME": "garethfuller.ruckus"
+        },
+        "cordova-plugin-insomnia": {
+            "PACKAGE_NAME": "garethfuller.ruckus"
+        }
+    },
+    "dependent_plugins": {}
+}

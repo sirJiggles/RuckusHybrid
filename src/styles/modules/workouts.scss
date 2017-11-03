@@ -1,0 +1,132 @@
+@import '../vars/colors';
+@import '../mixins/breakpoints';
+
+.workouts {
+  height: 100%;
+
+  .scroll {
+    min-height: 100%;
+  }
+
+  &__stats {
+    &__title {
+      padding: 10px 16px;
+      color: $text-white;
+    }
+  }
+
+  // empty state for the workouts screen
+  &__empty {
+
+    &__icon {
+      position: fixed;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      &:before {
+        color: #444;
+        font-size: 10em;
+      }
+    }
+
+  }
+
+  &__seen-icon {
+
+    &::before {
+      color: #ddd;
+    }
+  }
+
+  &__shared-icon {
+
+    &:before {
+      color: #666;
+    }
+  }
+
+  &__slide-cta {
+    color: white;
+
+    i {
+      display: block;
+      margin: 0 auto;
+    }
+
+    &:hover {
+      color: white;
+    }
+
+    &--share.button,
+    &--share.button.active,
+    &--share.button.activated {
+      background-color: $light-blue;
+      border: none;
+      border-radius: 0px;
+
+      i {
+        &::before {
+          font-size: 1.5em;
+        }
+      }
+    }
+
+    &--close.button,
+    &--close.button.active,
+    &--close.button.activated {
+      border: none;
+      border-radius: 0px;
+      background-color: $light-red;
+      i {
+        &::before {
+          font-size: 1.55em;
+        }
+      }
+    }
+  }
+
+  &__no-workouts {
+    padding: 16px;
+  }
+
+  &__workout {
+    list-style-type: none;
+
+    &__stat {
+      width: 100%;
+      margin:0;
+      padding: 10px 0;
+      border-bottom: 1px solid #555;
+      color: $text-white;
+      text-align: right;
+
+      &:last-child {
+        border: none;
+      }
+
+      @include bp(small) {
+        font-size: 1.2em;
+      }
+
+      @include bp(medium) {
+        font-size: 1.4em;
+      }
+
+      @include bp(large) {
+        font-size: 1.6em;
+      }
+
+      span {
+        color: $orange;
+      }
+    }
+  }
+
+}

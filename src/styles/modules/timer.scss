@@ -1,0 +1,286 @@
+@import '../mixins/breakpoints';
+@import '../vars/colors';
+
+.timer {
+  height: 100%;
+  position: relative;
+  overflow: hidden;
+
+  &__inner {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    height: 100%;
+    color: white;
+
+    // the finished styles
+    &--finished {
+
+      .timer__controls {
+        justify-content: space-around;
+
+        &-nav {
+          color: $text-white;
+          font-size: 0.7em;
+          padding: 20px 10px 10px 10px;
+          background-color: $blue;
+        }
+        &__control {
+          margin: 0;
+          text-align: center;
+
+          span {
+            display: block;
+            margin-top: 5px;
+            font-size: 1.5em;
+
+            @include bp(small) {
+              font-size: 1.7em;
+            }
+            @include bp(medium) {
+              font-size: 1.9em;
+            }
+            @include bp(large) {
+              font-size: 2.2em;
+            }
+            @include bp(larger) {
+              font-size: 2.6em;
+            }
+            @include bp(largest) {
+              font-size: 3.0em;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  &__progress {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  &__rounds {
+    width: 100%;
+    text-align: center;
+    font-size: 3.0em;
+    line-height: 1.0em;
+    padding-top: 20px;
+
+    &--done {
+      background-color: $blue;
+      padding: 20px 0;
+    }
+
+    @include bp(small) {
+      font-size: 4.0em;
+    }
+    @include bp(medium) {
+      font-size: 5.0em;
+    }
+    @include bp(large) {
+      font-size: 6.0em;
+    }
+    @include bp(larger) {
+      font-size: 7.0em;
+    }
+    @include bp(largest) {
+      font-size: 8.0em;
+    }
+  }
+
+  &__time {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    z-index: 9;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  &__digits {
+    font-size: 6em;
+    line-height: 1em;
+    font-weight: 300;
+    text-align: center;
+
+    @include bp(small) {
+      font-size: 8em;
+    }
+    @include bp(medium) {
+      font-size: 10em;
+    }
+    @include bp(large) {
+      font-size: 12em;
+    }
+    @include bp(larger) {
+      font-size: 17em;
+    }
+    @include bp(largest) {
+      font-size: 21em;
+    }
+    @include bp(omg) {
+      font-size: 40em;
+    }
+  }
+
+  &__controls-nav {
+    padding-bottom: 20px;
+  }
+
+  &__controls {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+
+    &__control {
+      margin-left: 20px;
+
+      &:first-child {
+        margin-left: 0;
+      }
+
+      &--saved,
+      &--shared {
+        i {
+          &::before {
+            color: $background-grey;
+          }
+        }
+      }
+
+      i {
+        display: block;
+
+        &::before {
+          font-size: 5em;
+          line-height: 1em;
+
+          @include bp(small) {
+            font-size: 8em;
+          }
+          @include bp(medium) {
+            font-size: 9em;
+          }
+          @include bp(large) {
+            font-size: 10em;
+          }
+          @include bp(larger) {
+            font-size: 13em;
+          }
+          @include bp(largest) {
+            font-size: 14em;
+          }
+        }
+      }
+    }
+  }
+
+  // styles for the finnished summary
+  &__finished-summary {
+    color: $text-white;
+    padding: 0 20px;
+    border-radius: 10px;
+    position: relative;
+
+    &__stats {
+      list-style-type: none;
+      margin: 0;
+      padding: 20px 10px 0 10px;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: flex-end;
+
+      &__stat {
+        color: $text-white;
+        font-size: 2em;
+        line-height: 1.5em;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        align-items: center;
+
+        span {
+          color: $lightest-orange;
+        }
+
+        @include bp(small) {
+          font-size: 3em;
+        }
+        @include bp(medium) {
+          font-size: 3.6em;
+        }
+        @include bp(large) {
+          font-size: 4.8em;
+        }
+        @include bp(larger) {
+          font-size: 7em;
+        }
+        @include bp(largest) {
+          font-size: 9em;
+        }
+      }
+
+      &__icon {
+        height: 20px;
+        margin-left: 30px;
+        display: block;
+
+        svg {
+          height: 20px;
+          display: block;
+        }
+
+        @include bp(small) {
+          height: 30px;
+          svg {
+            height: 30px;
+          }
+        }
+        @include bp(medium) {
+          height: 35px;
+          svg {
+            height: 35px;
+          }
+        }
+        @include bp(large) {
+          height: 40px;
+          svg {
+            height: 40px;
+          }
+        }
+        @include bp(larger) {
+          height: 70px;
+          svg {
+            height: 70px;
+          }
+        }
+        @include bp(largest) {
+          height: 80px;
+          svg {
+            height: 80px;
+          }
+        }
+      }
+
+      // &--rounds {
+      //   color: $lightest-blue;
+      // }
+      // &--hits {
+      //   color: $lightest-red;
+      // }
+      // &--time {
+      //   color: $lightest-orange;
+      // }
+    }
+  }
+}

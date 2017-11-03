@@ -1,0 +1,132 @@
+@import '../mixins/breakpoints';
+@import '../vars/colors';
+
+$circle: 200px;
+$circle-small: 240px;
+$circle-medium: 300px;
+$circle-large: 500px;
+$circle-larger: 550px;
+$circle-largest: 630px;
+
+.progress-circle {
+	margin: 20px auto;
+	width:  $circle;
+	height: $circle;
+	background-color: #222;
+	border-radius: 100%;
+  position: relative;
+
+  @include bp(small) {
+    width: $circle-small;
+    height: $circle-small;
+  }
+
+  @include bp(medium) {
+    width: $circle-medium;
+    height: $circle-medium;
+  }
+
+  @include bp(large) {
+    width: $circle-large;
+    height: $circle-large;
+  }
+
+  @include bp(larger) {
+    width: $circle-larger;
+    height: $circle-larger;
+  }
+
+  @include bp(largest) {
+    width: $circle-largest;
+    height: $circle-largest;
+  }
+
+  .progress-circle__fill {
+    background-color: $lightest-blue;
+  }
+
+  &--paused {
+    .progress-circle__fill {
+      background-color: $lightest-red;
+    }
+  }
+
+  &--countdown {
+    .progress-circle__fill {
+      background-color: $lightest-orange;
+    }
+  }
+
+	&__slice,
+  &__fill {
+		width: 100%;
+		height: 100%;
+		position: absolute;
+		border-radius: 0 50% 50% 0%;
+		transition: transform 0.4s linear;
+		-webkit-backface-visibility: hidden;
+		-webkit-transform-style: preserve-3d;
+		overflow:hidden;
+	}
+	&__slice {
+		clip: rect(0px, $circle, $circle, $circle/2);
+
+    @include bp(small) {
+      clip: rect(0px, $circle-small, $circle-small, $circle-small/2);
+    }
+    @include bp(medium) {
+      clip: rect(0px, $circle-medium, $circle-medium, $circle-medium/2);
+    }
+    @include bp(large) {
+      clip: rect(0px, $circle-large, $circle-large, $circle-large/2);
+    }
+    @include bp(larger) {
+      clip: rect(0px, $circle-larger, $circle-larger, $circle-larger/2);
+    }
+    @include bp(largest) {
+      clip: rect(0px, $circle-largest, $circle-largest, $circle-largest/2);
+    }
+
+		.progress-circle__fill {
+			clip: rect(0px, $circle/2, $circle, 0px);
+
+      @include bp(small) {
+        clip: rect(0px, $circle-small/2, $circle-small, 0px);
+      }
+      @include bp(medium) {
+        clip: rect(0px, $circle-medium/2, $circle-medium, 0px);
+      }
+      @include bp(large) {
+        clip: rect(0px, $circle-large/2, $circle-large, 0px);
+      }
+      @include bp(larger) {
+        clip: rect(0px, $circle-larger/2, $circle-larger, 0px);
+      }
+      @include bp(largest) {
+        clip: rect(0px, $circle-largest/2, $circle-largest, 0px);
+      }
+		}
+  }
+	&__overlay {
+		width: 100%;
+		height: 100%;
+		position: absolute;
+    transform: scale(0.97);
+		background-color: $background-grey;
+		border-radius: 50%;
+	}
+
+	$i: 0;
+	$increment: 180deg / 100;
+	@while $i <= 100 {
+		&[data-progress='#{$i}'] {
+			.progress-circle__fill.progress-circle__bar {
+				transform: rotate($increment * $i * 2);
+			}
+			.progress-circle__slice.full, .progress-circle__fill {
+        transform: rotate($increment * $i);
+			}
+      $i: $i + 1;
+		}
+	}
+}

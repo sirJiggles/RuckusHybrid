@@ -1,0 +1,37 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<plugin id="cordova-plugin-queries-schemes" version="0.1.1" xmlns="http://apache.org/cordova/ns/plugins/1.0">
+    <name>App Queries Strings</name>
+    <author>Rob Hilgefort (http://rob.hilgefort.me)</author>
+    <description>
+      Cordova / PhoneGap Plugin to work arround Apple's iOS9 requirement that URL Schemes
+      be declared and submitted to Apple (via Info.plist file)
+    </description>
+    <keywords>cordova, ios, app, queries, url, schemes, lsapplicationqueriesschemes</keywords>
+    <license>MIT</license>
+    <engines>
+        <engine name="cordova" version=">=3.0.0"/>
+    </engines>
+    <platform name="ios">
+      <config-file target="*-Info.plist" parent="LSApplicationQueriesSchemes">
+        <array>
+          <string>fb</string>
+          <string>twitter</string>
+          <string>gplus</string>
+          <string>pintrest</string>
+          <string>instagram</string>
+          <string>youtube</string>
+          <string>vnd.youtube</string>
+          <string>yelp</string>
+          <string>linkedin</string>
+          <string>tumblr</string>
+          <string>whatsapp</string>
+          <string>snapchat</string>
+          <string>comgooglemaps</string>
+          <string>amazon</string>
+          <string>skype</string>
+          <string>googledrive</string>
+          <string>itms-apps</string>
+        </array>
+      </config-file>
+    </platform>
+</plugin>

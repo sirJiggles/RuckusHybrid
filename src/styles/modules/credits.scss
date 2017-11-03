@@ -1,0 +1,27 @@
+@import '../vars/colors';
+
+.credits {
+  margin-bottom: 50px;
+
+  a {
+    float: right;
+    color: $text-white;
+  }
+
+  .item {
+    padding: 15px;
+    text-overflow: initial;
+    white-space: normal;
+  }
+
+  a.credits__back {
+    float: none;
+  }
+
+  &__svg {
+    height: 23px;
+    svg {
+      height: 23px;
+    }
+  }
+}

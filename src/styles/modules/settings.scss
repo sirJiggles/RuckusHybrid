@@ -1,0 +1,44 @@
+@import '../mixins/breakpoints';
+@import '../vars/colors';
+
+.settings {
+
+  .scroll-content {
+    margin-bottom: 40px;
+  }
+
+  label {
+    font-weight: 300;
+  }
+
+  .custom-toggle {
+    pointer-events: all;
+    padding: 20px 99px 20px 15px;
+  }
+
+  .flaticon {
+    &::before {
+      color: #eee;
+    }
+  }
+
+  .flaticon.flaticon-info {
+    display: inline-block;
+    margin-right: 10px;
+    cursor: pointer;
+  }
+
+  &__volume-sample {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-items: center;
+    justify-content: center;
+    padding: 10px 0;
+
+    i:before {
+      font-size: 4.0em;
+      line-height: 1.0em;
+    }
+  }
+}

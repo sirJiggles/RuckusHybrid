@@ -1,0 +1,162 @@
+@import "vars/index";
+@import "mixins/index";
+@import "modules/index";
+
+body {
+  font-weight: 300;
+  // can also be 500
+  font-size: 10px;
+}
+
+.view-dark {
+  background-color: $background-grey;
+  transition: background linear 2s;
+}
+
+.view-100 {
+  &.pane {
+    bottom: 49px;
+    top: 0;
+    width: auto;
+    height: auto;
+    left: 0;
+    right: 0;
+  }
+
+  .scroll {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+  }
+}
+
+// Ionic overrides
+.toggle input {
+  &:checked+.track {
+    background-color: $dark-blue;
+    border-color: $dark-blue;
+  }
+  &+.track {
+    border-color: white;
+  }
+}
+
+
+.range input[type="range"]::-webkit-slider-thumb:before {
+  background-color: $dark-blue;
+}
+
+.button-outline.button-outline,
+.button-outline.button-outline.activated,
+.button-outline.button-outline.active {
+  color: $lightest-blue;
+  border-color: $lightest-blue;
+  border-radius: 4px;
+  background: none;
+
+  &:before {
+    color: $lightest-blue;
+    position: absolute;
+    right: 10px;
+  }
+}
+
+.button-outline.button-outline.activated,
+.button-outline.button-outline.active {
+  opacity: 0.8;
+}
+
+
+.popup-container .popup {
+  background-color: white;
+  border-radius: 10px;
+
+  .popup-body {
+    font-size: 1.4em;
+    text-align: center;
+  }
+
+  .popup-title {
+    font-size: 1.9em;
+  }
+
+  .button,
+  .button.active,
+  .button.activated {
+    border-color: #b2b2b2;
+    background-color: #f8f8f8;
+    color: #444;
+    max-width: auto !important;
+
+    &.button-positive {
+      background-color: $light-blue;
+      border-color: $light-blue;
+      color: white;
+
+      &.activated,
+      &.active {
+        background-color: $light-blue;
+        border-color: $light-blue;
+      }
+    }
+  }
+}
+
+// active item background colors
+.item .item-content.activated, .item .item-content.active, .item-complex.activated .item-content, .item-complex.active .item-content, .item.activated, .item.active {
+  background: none;
+}
+
+.item {
+  background: none;
+  color: $text-white;
+  border: none;
+  border-bottom: 1px solid #444;
+  padding: 10px 15px;
+  margin: 0;
+
+  &:last-child {
+    border: none;
+  }
+
+  &--no-border {
+    border: none;
+  }
+
+  &--border-top {
+    border-bottom: 1px solid #999;
+  }
+
+  &-toggle {
+    .toggle {
+      top: 17px;
+    }
+  }
+
+  &-select {
+
+    &:after {
+      color: #eee;
+    }
+    select {
+      color: #eee;
+      background: none;
+    }
+  }
+
+  &-divider {
+    background-color: rgba(white, 0.1);
+    padding: 10px 16px;
+    border: none;
+    color: white;
+    font-weight: 300;
+  }
+}
+
+.input {
+  &-label {
+    color: #eee;
+  }
+}

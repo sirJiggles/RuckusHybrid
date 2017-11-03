@@ -1,0 +1,13 @@
+{
+    "Social.framework": 1,
+    "MessageUI.framework": 1,
+    "CFNetwork.framework": 1,
+    "SystemConfiguration.framework": 1,
+    "CoreText.framework": 1,
+    "Foundation.framework": 1,
+    "QuartzCore.framework": 1,
+    "QuickLook.framework": 1,
+    "Security.framework": 1,
+    "UIKit.framework": 1,
+    "libc++.tbd": 1
+}
